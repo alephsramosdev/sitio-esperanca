@@ -40,7 +40,7 @@ const HeaderBase = styled.header`
             & .option {
                 padding: 12px 16px;
                 cursor: pointer;
-                font-size: 18px;
+                font-size: 16px;
                 font-family: ${(props) => props.theme.fonts.primary};
                 font-weight: ${(props) => props.theme.fonts.weights.medium};
                 color: ${(props) => props.theme.colors.text.white};

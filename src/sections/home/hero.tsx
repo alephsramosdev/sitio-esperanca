@@ -78,9 +78,9 @@ const HeroSection = styled.section`
         }
 
         & > h1 {
-            font-size: 92px;
+            font-size: 82px;
             font-family: ${(props) => props.theme.fonts.primary};
-            line-height: 1;
+            line-height: 100%;
             letter-spacing: -1px;
             color: ${(props) => props.theme.colors.text.white};
 
