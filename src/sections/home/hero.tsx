@@ -12,7 +12,7 @@ const HeroSection = styled.section`
     background-size: cover;
     min-height: calc(100vh - 16px);
     border-radius: 32px;
-    padding: calc(5% - 8px);
+    padding: 48px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -50,7 +50,7 @@ const HeroSection = styled.section`
         width: calc(100% - 10px);
         margin-top: 5px;
         justify-content: flex-end;
-        padding: 10% 5%;
+        padding: 24px;
         gap: 22px;
         border-radius: 32px 32px;
         background: url(${BgImage.src}) no-repeat center center;
@@ -128,7 +128,7 @@ const HeroSection = styled.section`
 `
 
 export default function Hero() {
-    return <HeroSection className="hero" data-aos="fade-up" data-aos-duration="900">
+    return <HeroSection id="home" className="hero" data-aos="fade-up" data-aos-duration="900">
         <div className="title">
             <Text as="h1">
                 Viva uma experiência <strong>totalmente</strong> inesquecível
@@ -139,7 +139,7 @@ export default function Hero() {
                 Uma experiência confortável e de excelência para você e sua família, contamos com uma ambiente lindo e agradável em meio a natureza
             </Text>
             <Button
-                bgColor="#fffce0"
+                bgColor="#fff"
                 color="#000"
             >
                 Reservar agora

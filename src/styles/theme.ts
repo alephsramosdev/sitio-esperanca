@@ -17,7 +17,7 @@ export const theme = {
                 light: 'rgb(68, 68, 68)',
             },
             white: {
-                primary: 'rgb(255, 252, 224)',
+                primary: 'rgb(255, 255, 255)',
                 base: 'rgb(255, 255, 255)',
                 light: 'rgb(250, 250, 250)',
                 dark: 'rgb(245, 245, 245)'
@@ -36,14 +36,14 @@ export const theme = {
         },
         background: {
             base: 'rgb(255, 255, 255)',
-            light: 'rgb(250, 252, 224)',
+            light: 'rgb(250, 255, 255)',
             dark: 'rgb(245, 245, 245)',
         },
         text: {
             primary: 'rgb(18, 18, 18)',
             secondary: 'rgb(68, 68, 68)',
             disabled: 'rgb(142, 142, 147)',
-            white: 'rgb(255, 252, 224)',
+            white: 'rgb(255, 255, 255)',
         },
     },
     fonts: {

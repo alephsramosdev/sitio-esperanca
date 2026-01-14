@@ -2,11 +2,11 @@ import MomentCard from "@/components/cards/moment";
 import Text from "@/components/text";
 import styled from "@emotion/styled";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { useRef } from "react";
+import type { Swiper as SwiperClass } from "swiper";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 import imageExample from "@/assets/unidade/hero-op-1.jpg";
 import setaParaDireita from "@/assets/icons/seta-para-direita.svg";
@@ -25,7 +25,7 @@ import EspacoCrianca from "@/assets/moments/espaco-para-crianca-sitio-esperanca.
 
 const MomentContainer = styled.section`
     width: 100%;
-    padding: 5%;
+    padding: 48px;
     background-color: ${(props) => props.theme.colors.neutral.white.base};
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ const MomentContainer = styled.section`
 
     @media (max-width: 768px) {
         gap: 32px;
-        padding: 10% 5%;
+        padding: 48px 24px;
     }
 
     & .carousel {
@@ -190,8 +190,10 @@ const slides = [
 ];
 
 export default function MomentsSection() {
-    const prevRef = useRef<HTMLButtonElement | null>(null);
-    const nextRef = useRef<HTMLButtonElement | null>(null);
+    const swiperRef = useRef<SwiperClass | null>(null);
+
+    const handlePrev = () => swiperRef.current?.slidePrev();
+    const handleNext = () => swiperRef.current?.slideNext();
 
     return (
         <MomentContainer data-aos="fade-up" data-aos-duration="800">
@@ -201,12 +203,12 @@ export default function MomentsSection() {
             </article>
 
             <div className="carousel">
-                <button ref={prevRef} className="nav-button nav-prev" aria-label="Anterior">
+                <button type="button" onClick={handlePrev} className="nav-button nav-prev" aria-label="Anterior">
                     <Image src={setaParaDireita} alt="anterior" />
                 </button>
 
                 <Swiper
-                    modules={[Navigation, Autoplay]}
+                    modules={[Autoplay]}
                     autoplay={{
                         delay: 2000,
                         disableOnInteraction: false,
@@ -214,15 +216,8 @@ export default function MomentsSection() {
                     slidesPerView={1}
                     spaceBetween={24}
                     loop={true}
-                    navigation={{
-                        prevEl: prevRef.current,
-                        nextEl: nextRef.current,
-                    }}
-                    onBeforeInit={(swiper) => {
-                        if (typeof swiper.params.navigation === "object") {
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            swiper.params.navigation.nextEl = nextRef.current;
-                        }
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
                     }}
                     breakpoints={{
                         1024: {
@@ -241,7 +236,7 @@ export default function MomentsSection() {
                     ))}
                 </Swiper>
 
-                <button ref={nextRef} className="nav-button nav-next" aria-label="Próximo">
+                <button type="button" onClick={handleNext} className="nav-button nav-next" aria-label="Próximo">
                     <Image src={setaParaDireita} alt="próximo" />
                 </button>
             </div>

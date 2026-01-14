@@ -25,10 +25,10 @@ const Texts = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 24px;
-    padding: 5%;
+    padding: 48px;
 
     @media (max-width: 768px) {
-        padding: 10% 5%;
+        padding: 24px;
     }
 
     & .title {
@@ -108,7 +108,7 @@ const Images = styled.div`
 `
 
 export default function City() {
-    return <CityContainer data-aos="fade-up" data-aos-duration="800">
+    return <CityContainer id="local" data-aos="fade-up" data-aos-duration="800">
         <Texts>
             <Text as="h1" className="title">
                 Aproveita <strong>atividades pela cidade</strong> de Miguel Pereira

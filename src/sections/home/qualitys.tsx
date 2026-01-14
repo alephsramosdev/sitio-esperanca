@@ -18,7 +18,7 @@ const float = keyframes`
 
 const QualityContainer = styled.section`
     width: 100%;
-    padding: 5%;
+    padding: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@ const QualityContainer = styled.section`
 
     @media (max-width: 768px) {
         flex-direction: column-reverse;
-        padding: 10% 5%;
+        padding: 48px 24px;
     }
 
     & .texts {
@@ -170,7 +170,7 @@ const QualityContainer = styled.section`
 `
 
 export default function QualitysSection() {
-    return <QualityContainer data-aos="fade-up" data-aos-duration="800">
+    return <QualityContainer id="sobre" data-aos="fade-up" data-aos-duration="800">
         <aside className="texts">
             <Text as="h1" className="title">A <strong>hospedagem</strong> que você sonhava é real</Text>
             <Text as="p" className="description">

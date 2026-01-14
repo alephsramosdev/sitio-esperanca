@@ -4,10 +4,9 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperClass } from "swiper";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 import seta from "@/assets/icons/seta-para-direita.svg";
 import SuiteCard from "@/components/cards/suite";
@@ -21,12 +20,12 @@ const SuitesContainer = styled.section`
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    padding: 5% 5% 2.5% 5%;
+    padding: 48px;
     flex-direction: column;
-    gap: 42px;
+    gap: 48px;
 
     @media (max-width: 768px) {
-        padding: 10% 7.5%;
+        padding:48px 24px;
         gap: 48px;
     }
 
@@ -169,8 +168,10 @@ const Carousel = styled.div`
 `
 
 export default function Suites() {
-    const prevRef = useRef<HTMLButtonElement | null>(null);
-    const nextRef = useRef<HTMLButtonElement | null>(null);
+    const swiperRef = useRef<SwiperClass | null>(null);
+
+    const handlePrev = () => swiperRef.current?.slidePrev();
+    const handleNext = () => swiperRef.current?.slideNext();
 
     return <SuitesContainer data-aos="fade-up" data-aos-duration="800">
         <aside className="texts">
@@ -180,18 +181,10 @@ export default function Suites() {
         </aside>
         <Carousel>
             <Swiper
-                modules={[Navigation]}
                 slidesPerView={1}
                 spaceBetween={24}
-                navigation={{
-                    prevEl: prevRef.current,
-                    nextEl: nextRef.current,
-                }}
-                onBeforeInit={(swiper) => {
-                    if (typeof swiper.params.navigation === "object") {
-                        swiper.params.navigation.prevEl = prevRef.current;
-                        swiper.params.navigation.nextEl = nextRef.current;
-                    }
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
                 }}
                 breakpoints={{
                     1024: {
@@ -204,17 +197,16 @@ export default function Suites() {
                 {suites.map((suite) => (
                     <SwiperSlide key={suite.id}>
                         <SuiteCard
-                            suite_img={suite.images[0]}
-                            suite_name={suite.name}
+                            suite={suite}
                         />
                     </SwiperSlide>
                 ))}
             </Swiper>
             <div className="controls">
-                <button ref={prevRef} aria-label="Anterior">
+                <button type="button" onClick={handlePrev} aria-label="Anterior">
                     <Image src={seta} alt="Seta para esquerda" />
                 </button>
-                <button ref={nextRef} aria-label="Próximo">
+                <button type="button" onClick={handleNext} aria-label="Próximo">
                     <Image src={seta} alt="Seta para direita" />
                 </button>
             </div>
@@ -230,10 +222,10 @@ export default function Suites() {
                 </Button>
             </div>
             <div className="controls">
-                <button ref={prevRef} aria-label="Anterior">
+                <button type="button" onClick={handlePrev} aria-label="Anterior">
                     <Image src={seta} alt="Seta para esquerda" />
                 </button>
-                <button ref={nextRef} aria-label="Próximo">
+                <button type="button" onClick={handleNext} aria-label="Próximo">
                     <Image src={seta} alt="Seta para direita" />
                 </button>
             </div>

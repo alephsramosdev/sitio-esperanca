@@ -5,7 +5,6 @@ const Overlay = styled.div`
     position: fixed;
     inset: 0;
     z-index: 900;
-    background: #00000040;
     opacity: 0;
     pointer-events: none;
     transition: opacity 220ms ease;
@@ -18,12 +17,11 @@ const Overlay = styled.div`
 
 const SidebarContainer = styled.aside`
     position: fixed;
-    top: 82px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%) translateY(-8px) scale(0.98);
     opacity: 0;
     width: calc(100% - 10%);
-    box-shadow: 0 0 80px #00000080;
     background: ${(props) => props.theme.colors.background.base};
     color: ${(props) => props.theme.colors.text.primary};
     border-radius: 26px;
@@ -48,15 +46,26 @@ const SidebarContainer = styled.aside`
         padding: 18px 14px;
         width: 100%;
 
-        & > span {
+        & > a {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 4px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        & > a > span {
             font-family: ${(props) => props.theme.fonts.secondary};
             color: ${(props) => props.theme.colors.neutral.black.primary};
             font-weight: 500;
             line-height: 1;
             font-size: 18px;
-        } 
+        }
 
-        & > p {
+        & > a > p {
             font-family: ${(props) => props.theme.fonts.primary};
             font-weight: 300;
             line-height: 1.2;

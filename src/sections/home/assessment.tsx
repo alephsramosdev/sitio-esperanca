@@ -2,11 +2,10 @@ import Button from "@/components/button";
 import Text from "@/components/text";
 import styled from "@emotion/styled";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import { useRef, useState } from "react";
+import type { Swiper as SwiperClass } from "swiper";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import AssessmentCard from "@/components/cards/assessment";
 import Image from "next/image";
 import setaParaDireita from "@/assets/icons/seta-para-direita.svg";
@@ -26,12 +25,12 @@ const AssessmentContainer = styled.section`
     flex-direction: row;
     gap: 48px;
     height: auto;
-    padding: 5% 0;
+    padding: 48px 0;
 
     @media (max-width: 768px) {
         flex-direction: column;
         gap: 32px;
-        padding: 10% 5%;
+        padding: 24px;
     }
 `
 
@@ -195,12 +194,14 @@ const slides = [
 ];
 
 export default function Assessment() {
-    const prevRef = useRef<HTMLButtonElement | null>(null);
-    const nextRef = useRef<HTMLButtonElement | null>(null);
+    const swiperRef = useRef<SwiperClass | null>(null);
     const [index, setIndex] = useState(0);
 
+    const handlePrev = () => swiperRef.current?.slidePrev();
+    const handleNext = () => swiperRef.current?.slideNext();
+
     return (
-        <AssessmentContainer data-aos="fade-up" data-aos-duration="800">
+        <AssessmentContainer id="avaliacao" data-aos="fade-up" data-aos-duration="800">
             <Texts>
                 <Text as="h1" className="title">
                     Nota <strong>máxima</strong> no Google, um paraíso!
@@ -215,18 +216,10 @@ export default function Assessment() {
 
             <Carousel>
                 <Swiper
-                    modules={[Navigation]}
                     slidesPerView={1.2}
                     spaceBetween={16}
-                    navigation={{
-                        prevEl: prevRef.current,
-                        nextEl: nextRef.current,
-                    }}
-                    onBeforeInit={(swiper) => {
-                        if (typeof swiper.params.navigation === "object") {
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            swiper.params.navigation.nextEl = nextRef.current;
-                        }
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
                     }}
                     onSlideChange={(swiper) => setIndex(swiper.realIndex)}
                     loop={false}
@@ -246,10 +239,10 @@ export default function Assessment() {
                 <div className="nav-row">
                     <div className="fraction">{index + 1} / {slides.length}</div>
                     <div className="nav-buttons">
-                        <button ref={prevRef} className="nav-btn prev" aria-label="Anterior">
+                        <button type="button" onClick={handlePrev} className="nav-btn prev" aria-label="Anterior">
                             <Image src={setaParaDireita} alt="anterior" />
                         </button>
-                        <button ref={nextRef} className="nav-btn next" aria-label="Próximo">
+                        <button type="button" onClick={handleNext} className="nav-btn next" aria-label="Próximo">
                             <Image src={setaParaDireita} alt="próximo" />
                         </button>
                     </div>

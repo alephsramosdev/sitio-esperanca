@@ -7,7 +7,7 @@ import CasamentoMobile from "@/assets/event/casamento-sitio-esperanca.jpeg";
 
 const EventContainer = styled.section`
     width: calc(100% - 24px);
-    padding: 5%;
+    padding: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,6 +52,7 @@ const EventContainer = styled.section`
 
     @media (max-width: 768px) {
         background-image: url(${CasamentoMobile.src});
+        padding: 24px;
     }
 
     & .content {
@@ -114,7 +115,7 @@ const Texts = styled.div`
 
 
 export default function Event() {
-    return <EventContainer data-aos="fade-up" data-aos-duration="800">
+    return <EventContainer id="eventos" data-aos="fade-up" data-aos-duration="800">
         <main className="content">
             <Texts>
                 <Text as="h1" className="title">
