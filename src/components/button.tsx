@@ -8,7 +8,7 @@ type ButtonStyleProps = {
     bgColor?: string;
 };
 
-const buttonBase = css<ButtonStyleProps>`
+const buttonBase = css`
     border: none;
     font-size: 18px;
     width: 162px;
