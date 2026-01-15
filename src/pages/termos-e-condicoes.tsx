@@ -53,7 +53,7 @@ export default function TermosECondicoesPage() {
                 title="Termos e Condições | Sítio Esperança"
                 description="Termos e condições do Sítio Esperança."
                 path="/termos-e-condicoes"
-                    image="/api/og/default"
+                image="/api/og/default"
                 type="website"
             />
 

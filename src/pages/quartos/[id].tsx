@@ -838,7 +838,8 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
     const otherSuites = useMemo(() => suites.filter((s) => s.id !== suite.id), [suite.id]);
 
-    const { installmentPrice } = useMemo(() => {
+    const { installmentPrice, installmentCount } = useMemo(() => {
+        const installmentCount = 3;
         const pricing = suite.pricing;
 
         const getNightRate = (date: Date): number => {
@@ -862,7 +863,8 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
         }
 
         return {
-            installmentPrice: total / 6,
+            installmentCount,
+            installmentPrice: total / installmentCount,
         };
     }, [suite.price, suite.pricing, checkIn, checkOut]);
 
@@ -1015,7 +1017,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         <div className="price">
                             <Text as="span" className="value">
                                 <span style={{ fontSize: 16, opacity: 0.75, fontWeight: 500 }}>
-                                    A partir de: 6x de{" "}
+                                    A partir de: {installmentCount}x de{" "}
                                 </span>
                                 <span style={{ fontSize: 22, fontWeight: 700 }}>
                                     {formatCurrencyBRL(installmentPrice)}
@@ -1173,7 +1175,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
                         <Text as="div" className="price">
                             <span style={{ fontSize: 12, opacity: 0.75, fontWeight: 500 }}>
-                                A partir de: 6x de{" "}
+                                A partir de: {installmentCount}x de{" "}
                             </span>
                             <span style={{ fontWeight: 700 }}>
                                 {formatCurrencyBRL(installmentPrice)}
