@@ -4,6 +4,14 @@ export default function Document() {
   return (
     <Html lang="pt-BR">
       <Head>
+        <meta charSet="utf-8" />
+        <meta name="theme-color" content="#084734" />
+
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

@@ -1,5 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
+import Seo from "@/components/seo";
 import styled from "@emotion/styled";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
@@ -775,6 +775,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
     const title = suite.name;
     const description = suite.shortDescription;
+    const suiteImage = suite.images?.[0] || "/logo-black.png";
 
     const facts = useMemo(
         () => [
@@ -885,10 +886,14 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
     return (
         <>
-            <Head>
-                <title>{title} | Sítio Esperança</title>
-                <meta name="description" content={description} />
-            </Head>
+            <Seo
+                title={`${title} | Sítio Esperança`}
+                description={description}
+                path={`/quartos/${suite.id}`}
+                image={suiteImage}
+                additionalImages={["/logo-black.png", "/favicon.png"]}
+                type="article"
+            />
 
             <Page>
                 <TitleBlock>

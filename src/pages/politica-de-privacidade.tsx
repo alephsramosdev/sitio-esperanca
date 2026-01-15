@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/seo";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -49,10 +49,13 @@ const Content = styled.section`
 export default function PoliticaDePrivacidadePage() {
     return (
         <>
-            <Head>
-                <title>Política de Privacidade | Sítio Esperança</title>
-                <meta name="description" content="Política de privacidade do Sítio Esperança." />
-            </Head>
+            <Seo
+                title="Política de Privacidade | Sítio Esperança"
+                description="Política de privacidade do Sítio Esperança."
+                path="/politica-de-privacidade"
+                image="/logo-black.png"
+                type="website"
+            />
 
             <Page>
                 <Content>

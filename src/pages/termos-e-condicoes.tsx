@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/seo";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -49,10 +49,13 @@ const Content = styled.section`
 export default function TermosECondicoesPage() {
     return (
         <>
-            <Head>
-                <title>Termos e Condições | Sítio Esperança</title>
-                <meta name="description" content="Termos e condições do Sítio Esperança." />
-            </Head>
+            <Seo
+                title="Termos e Condições | Sítio Esperança"
+                description="Termos e condições do Sítio Esperança."
+                path="/termos-e-condicoes"
+                image="/logo-black.png"
+                type="website"
+            />
 
             <Page>
                 <Content>

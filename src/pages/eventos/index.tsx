@@ -1,3 +1,16 @@
+import Seo from "@/components/seo";
+
 export default function Eventos() {
-    return <div>Eventos Page</div>;
+    return (
+        <>
+            <Seo
+                title="Eventos | Sítio Esperança"
+                description="Realize seu evento no Sítio Esperança. Entre em contato e faça sua reserva."
+                path="/eventos"
+                image="/logo-black.png"
+                type="website"
+            />
+            <div style={{ padding: 148, width: "100%" }}>Eventos Page</div>
+        </>
+    );
 }

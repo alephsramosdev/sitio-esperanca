@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Text from '@/components/text';
+import Seo from '@/components/seo';
 
 import { suites } from '@/db/suites';
 import SuiteCard from '@/components/cards/suite';
@@ -86,19 +87,28 @@ const List = styled.ul`
 `
 
 export default function Suites() {
-    return <SuitesContainer>
-        <Texts>
-            <Text as="h1" className="title">Conheça todas as nossas suítes</Text>
-            <Text as="p" className="description">Conforto e elegância em cada detalhe, um refúgio perfeito para o seu descanso.</Text>
-        </Texts>
-        <List>
-            {suites.map((suite) => (
-                <li key={suite.id}>
-                    <SuiteCard
-                        suite={suite}
-                    />
-                </li>
-            ))}
-        </List>
-    </SuitesContainer>
+    return <>
+        <Seo
+            title="Acomodações | Sítio Esperança"
+            description="Veja todas as acomodações do Sítio Esperança e escolha a suíte ideal para sua estadia."
+            path="/quartos"
+            image="/logo-black.png"
+            type="website"
+        />
+        <SuitesContainer>
+            <Texts>
+                <Text as="h1" className="title">Conheça todas as nossas suítes</Text>
+                <Text as="p" className="description">Conforto e elegância em cada detalhe, um refúgio perfeito para o seu descanso.</Text>
+            </Texts>
+            <List>
+                {suites.map((suite) => (
+                    <li key={suite.id}>
+                        <SuiteCard
+                            suite={suite}
+                        />
+                    </li>
+                ))}
+            </List>
+        </SuitesContainer>
+    </>
 }
