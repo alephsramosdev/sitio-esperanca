@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { css, type Theme } from "@emotion/react";
 import React from "react";
 import Text from "./text";
 
@@ -8,7 +8,7 @@ type ButtonStyleProps = {
     bgColor?: string;
 };
 
-const buttonBase = css`
+const buttonBase = ({ theme, bgColor, color }: ButtonStyleProps & { theme: Theme }) => css`
     border: none;
     font-size: 18px;
     width: 162px;
@@ -17,11 +17,11 @@ const buttonBase = css`
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    font-family: ${(props) => props.theme.fonts.primary};
+    font-family: ${theme.fonts.primary};
     letter-spacing: -1px;
-    font-weight: ${(props) => props.theme.fonts.weights.medium};
-    background: ${({ bgColor }) => bgColor || "#000"};
-    color: ${({ color }) => color || "#fff"};
+    font-weight: ${theme.fonts.weights.medium};
+    background: ${bgColor || "#000"};
+    color: ${color || "#fff"};
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
