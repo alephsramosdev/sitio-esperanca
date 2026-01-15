@@ -127,6 +127,7 @@ export default function Event() {
                 <Button
                     bgColor="#fff"
                     color="#000"
+                    href="/eventos"
                 >
                     Saiba mais
                 </Button>

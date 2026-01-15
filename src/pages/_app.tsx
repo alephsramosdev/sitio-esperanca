@@ -9,6 +9,7 @@ import Script from "next/script";
 import { theme } from "@/styles/theme";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { captureAndPersistUtmFromLocation } from "@/utils/utm";
 
 const GTM_ID = "GTM-PD3JQGRS";
 
@@ -57,6 +58,10 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off("hashChangeComplete", handleRouteDone);
     };
   }, [router.events]);
+
+  useEffect(() => {
+    captureAndPersistUtmFromLocation();
+  }, [router.asPath]);
 
   return (
     <ThemeProvider theme={theme}>

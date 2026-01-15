@@ -7,6 +7,7 @@ import LogoImage from "@/assets/logotipo/logo.svg";
 import LogoBlack from "../../../public/logo-black.svg";
 import Text from "../text";
 import Button from "../button";
+import ReserveNowButton from "@/components/reserve-now-button";
 import Sidebar from "./sidebar";
 
 type HeaderBaseProps = {
@@ -186,12 +187,10 @@ function DesktopHeaderContent({ solid }: { solid: boolean }) {
                         </Link>
                     </li>
                 </ul>
-                <Button
+                <ReserveNowButton
                     bgColor={solid ? "rgb(18, 18, 18)" : "rgb(255, 255, 255)"}
                     color={solid ? "rgb(255, 255, 255)" : "rgb(8, 71, 52)"}
-                >
-                    Reservar agora
-                </Button>
+                />
             </nav>
         </>
     );
@@ -256,9 +255,11 @@ function MobileHeaderContent({ solid }: { solid: boolean }) {
                     <MobileLink href="/#avaliacao" title="Avaliação" subtitle="Veja o que falam" />
                 </div>
                 <div className="div7">
-                    <button>
-                        Reservar agora
-                    </button>
+                    <ReserveNowButton
+                        bgColor="#000"
+                        color="#fff"
+                        style={{ width: "100%" }}
+                    />
                 </div>
             </Sidebar>
         </>

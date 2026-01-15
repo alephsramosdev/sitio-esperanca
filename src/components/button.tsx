@@ -24,6 +24,7 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
@@ -62,24 +63,58 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
     }
 `
 
-interface ButtonProps
-    extends ButtonStyleProps,
-    React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonBaseProps = ButtonStyleProps & {
     children?: React.ReactNode;
-    onClick?: () => void;
     className?: string;
-}
+};
+
+type ButtonAsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined;
+};
+
+type ButtonAsAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+};
+
+export type ButtonProps = ButtonBaseProps & (ButtonAsButtonProps | ButtonAsAnchorProps);
 
 export default function Button({
     children,
     color,
     bgColor,
-    onClick = () => { alert("Button clicked!") },
     className,
     ...props
 }: ButtonProps) {
+    if ("href" in props && typeof props.href === "string") {
+        const { href, ...anchorProps } = props;
+
+        return (
+            <ButtonStyle
+                as="a"
+                href={href}
+                bgColor={bgColor}
+                color={color}
+                className={className}
+                {...(anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+            >
+                <Text as="span" className="text_static">
+                    {children}
+                </Text>
+                <Text as="span" className="text_hover">
+                    {children}
+                </Text>
+            </ButtonStyle>
+        );
+    }
+
     return (
-        <ButtonStyle bgColor={bgColor} color={color} className={className} {...props} onClick={onClick}>
+        <ButtonStyle
+            bgColor={bgColor}
+            color={color}
+            className={className}
+            type={(props as React.ButtonHTMLAttributes<HTMLButtonElement>).type || "button"}
+            {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        >
             <Text as="span" className="text_static">
                 {children}
             </Text>

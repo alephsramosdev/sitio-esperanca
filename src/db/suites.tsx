@@ -40,6 +40,10 @@ export interface Suite {
     bed: number;
     bedType: string;
     price: number;
+    pricing?: {
+        weekday: number; // domingo a sexta
+        weekend: number; // sexta a domingo
+    };
     amenities: AmenityItem[];
     images: string[]; // use public asset paths to avoid many imports
     noAmenities: AmenityItem[];
@@ -88,7 +92,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 1,
         bedType: "Cama king",
-        price: 250,
+        price: 300,
+        pricing: {
+            weekday: 300,
+            weekend: 360,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [
@@ -109,7 +117,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 1,
         bedType: "Cama casal",
-        price: 250,
+        price: 300,
+        pricing: {
+            weekday: 300,
+            weekend: 360,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [
@@ -129,7 +141,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 2,
         bedType: "1 cama casal + 1 cama solteiro",
-        price: 250,
+        price: 320,
+        pricing: {
+            weekday: 320,
+            weekend: 390,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [
@@ -151,7 +167,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 1,
         bedType: "Cama casal",
-        price: 250,
+        price: 300,
+        pricing: {
+            weekday: 300,
+            weekend: 360,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [
@@ -173,7 +193,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 2,
         bedType: "2 camas casal",
-        price: 250,
+        price: 430,
+        pricing: {
+            weekday: 430,
+            weekend: 500,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [
@@ -196,7 +220,11 @@ export const suites: Suite[] = [
         bathroom: 1,
         bed: 5,
         bedType: "Cama super king + sofá-cama",
-        price: 500,
+        price: 700,
+        pricing: {
+            weekday: 700,
+            weekend: 800,
+        },
         amenities: [...commonAmenities],
         // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
         images: [

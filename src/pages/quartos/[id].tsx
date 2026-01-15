@@ -17,6 +17,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import Text from "@/components/text";
 import Button from "@/components/button";
+import ReserveNowButton from "@/components/reserve-now-button";
 import SuiteCard from "@/components/cards/suite";
 import type { Suite } from "@/db/suites";
 import { suites } from "@/db/suites";
@@ -702,8 +703,32 @@ function formatCurrencyBRL(value: number) {
     return new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL",
-        maximumFractionDigits: 0,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
     }).format(value);
+}
+
+function parseDateInput(value: string): Date | null {
+    if (!value) return null;
+    const parts = value.split("-").map((p) => Number(p));
+    if (parts.length !== 3) return null;
+    const [year, month, day] = parts;
+    if (!year || !month || !day) return null;
+    const date = new Date(year, month - 1, day);
+    if (Number.isNaN(date.getTime())) return null;
+    return date;
+}
+
+function addDays(date: Date, days: number): Date {
+    const next = new Date(date);
+    next.setDate(next.getDate() + days);
+    return next;
+}
+
+function isWeekendRateDay(date: Date): boolean {
+    // Regra simples: sexta (5), sábado (6) e domingo (0)
+    const d = date.getDay();
+    return d === 5 || d === 6 || d === 0;
 }
 
 export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
@@ -811,6 +836,34 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
     }, [whatsAppNumber, suite.name, suite.persons, checkIn, checkOut]);
 
     const otherSuites = useMemo(() => suites.filter((s) => s.id !== suite.id), [suite.id]);
+
+    const { installmentPrice } = useMemo(() => {
+        const pricing = suite.pricing;
+
+        const getNightRate = (date: Date): number => {
+            if (!pricing) return suite.price;
+            return isWeekendRateDay(date) ? pricing.weekend : pricing.weekday;
+        };
+
+        const checkInDate = parseDateInput(checkIn);
+        const checkOutDate = parseDateInput(checkOut);
+
+        let total = 0;
+
+        if (checkInDate && checkOutDate && checkOutDate.getTime() > checkInDate.getTime()) {
+            let cursor = checkInDate;
+            while (cursor.getTime() < checkOutDate.getTime()) {
+                total += getNightRate(cursor);
+                cursor = addDays(cursor, 1);
+            }
+        } else {
+            total = getNightRate(new Date());
+        }
+
+        return {
+            installmentPrice: total / 6,
+        };
+    }, [suite.price, suite.pricing, checkIn, checkOut]);
 
     const enjoyItems = useMemo(
         () => [
@@ -955,19 +1008,13 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
                     <SideCard ref={sideCardRef}>
                         <div className="price">
-                            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                                <Text as="span" style={{ fontSize: 12, color: "inherit", opacity: 0.75 }}>
-                                    A partir de:
-                                </Text>
-                                <Text as="span" className="value">
-                                    {formatCurrencyBRL(suite.price)}
-                                </Text>
-                                <Text as="span" style={{ fontSize: 12, color: "inherit", opacity: 0.7 }}>
-                                    O valor varia conforme a data
-                                </Text>
-                            </div>
-                            <Text as="span" className="note">
-                                por noite
+                            <Text as="span" className="value">
+                                <span style={{ fontSize: 16, opacity: 0.75, fontWeight: 500 }}>
+                                    A partir de: 6x de{" "}
+                                </span>
+                                <span style={{ fontSize: 22, fontWeight: 700 }}>
+                                    {formatCurrencyBRL(installmentPrice)}
+                                </span>
                             </Text>
                         </div>
 
@@ -1001,16 +1048,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         </div>
 
                         <div className="cta">
-                            <Button
-                                bgColor="rgb(8, 71, 52)"
-                                color="rgb(255, 255, 255)"
-                                onClick={() => {
-                                    // Placeholder: você vai conectar no motor de reservas depois
-                                    // Por enquanto, mantemos o CTA funcionando sem navegação.
-                                }}
-                            >
-                                Reservar agora
-                            </Button>
+                            <ReserveNowButton bgColor="rgb(8, 71, 52)" color="rgb(255, 255, 255)" />
 
                             <WhatsAppButton
                                 href={whatsAppUrl || "#"}
@@ -1129,19 +1167,16 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         </div>
 
                         <Text as="div" className="price">
-                            {formatCurrencyBRL(suite.price)} <span style={{ opacity: 0.7, fontWeight: 500 }}>/ noite</span>
+                            <span style={{ fontSize: 12, opacity: 0.75, fontWeight: 500 }}>
+                                A partir de: 6x de{" "}
+                            </span>
+                            <span style={{ fontWeight: 700 }}>
+                                {formatCurrencyBRL(installmentPrice)}
+                            </span>
                         </Text>
 
                         <div className="cta">
-                            <Button
-                                bgColor="rgb(8, 71, 52)"
-                                color="rgb(255, 255, 255)"
-                                onClick={() => {
-                                    // Placeholder para o motor de reservas
-                                }}
-                            >
-                                Reservar agora
-                            </Button>
+                            <ReserveNowButton bgColor="rgb(8, 71, 52)" color="rgb(255, 255, 255)" />
                         </div>
                     </StickyBarInner>
                 </StickyBar>

@@ -1,4 +1,4 @@
-import Button from "@/components/button"
+import ReserveNowButton from "@/components/reserve-now-button"
 import Text from "@/components/text"
 import styled from "@emotion/styled"
 import BgImage from "@/assets/unidade/bg-hero-mobile-sitio-esperanca.jpg"
@@ -138,12 +138,7 @@ export default function Hero() {
             <Text as="p">
                 Uma experiência confortável e de excelência para você e sua família, contamos com uma ambiente lindo e agradável em meio a natureza
             </Text>
-            <Button
-                bgColor="#fff"
-                color="#000"
-            >
-                Reservar agora
-            </Button>
+            <ReserveNowButton bgColor="#fff" color="#000" />
         </div>
     </HeroSection>
 }

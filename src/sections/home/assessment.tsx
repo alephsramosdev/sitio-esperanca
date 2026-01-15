@@ -1,4 +1,4 @@
-import Button from "@/components/button";
+import ReserveNowButton from "@/components/reserve-now-button";
 import Text from "@/components/text";
 import styled from "@emotion/styled";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -209,9 +209,7 @@ export default function Assessment() {
                 <Text as="p" className="description">
                     Todos esses feedbacks foram retirados diretamente do google, podendo ser acessados a qualquer momento
                 </Text>
-                <Button bgColor="#084734" color="#fff">
-                    Reservar agora
-                </Button>
+                <ReserveNowButton bgColor="#084734" color="#fff" />
             </Texts>
 
             <Carousel>

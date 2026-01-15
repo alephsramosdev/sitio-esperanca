@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import Button from "@/components/button";
+import ReserveNowButton from "@/components/reserve-now-button";
 import Text from "@/components/text";
 import Image from "next/image";
 
@@ -176,10 +176,9 @@ export default function QualitysSection() {
             <Text as="p" className="description">
                 Situado em <strong>Miguel Pereira</strong>, a cidade mais visitada do estado do <strong>Rio de Janeiro</strong>, oferecemos uma estádia de excelência e qualidade, garantindo conforto e uma <strong>experiência inesquecível!</strong>
             </Text>
-            <Button bgColor="#084734" color="#fff">
-                Reservar agora
-            </Button>
+            <ReserveNowButton bgColor="#084734" color="#fff" />
         </aside>
+
         <article className="cards">
             <div className="card card1">
                 <div className="card_icon">

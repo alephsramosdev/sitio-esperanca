@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
+import Link from "next/link";
 import Text from "../text";
-import Button from "../button";
 
 import Logo from "@/assets/logotipo/logo.svg";
 
 import Instagram from "@/assets/icons/instagram.svg";
-import Facebook from "@/assets/icons/facebook.svg";
 import WhatsApp from "@/assets/icons/whatsapp.svg";
+import ReserveNowButton from "@/components/reserve-now-button";
 
 const FooterContainer = styled.footer`
     width: calc(100% - 24px);
@@ -161,29 +161,30 @@ export default function Footer() {
             <li className="list-item">
                 <Image src={Logo} alt="Logo" />
                 <Text as="p" className="slogan">Um lugar para viver o extraordinário</Text>
-                <Button
-                    bgColor="#fff"
-                    color="#052d22"
-                >
-                    Reservar agora
-                </Button>
+                <ReserveNowButton bgColor="#fff" color="#052d22" />
             </li>
             <li className="list-item">
                 <Text as="h4">Mapa do site</Text>
                 <ul className="options">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#qualidades">Atrações</a></li>
-                    <li><a href="#o-que-fazer">O que fazer</a></li>
-                    <li><a href="#qualidades">Suites</a></li>
-                    <li><a href="#qualidades">Minha hospedagem</a></li>
-                    <li><a href="#qualidades">Fazer um evento</a></li>
+                    <li><Link href="/#home" scroll>Início</Link></li>
+                    <li><Link href="/#sobre" scroll>Atrações</Link></li>
+                    <li><Link href="/#o-que-fazer" scroll>O que fazer</Link></li>
+                    <li><Link href="/#suites" scroll>Suítes</Link></li>
+                    <li><Link href="/quartos">Minha hospedagem</Link></li>
+                    <li><Link href="/#eventos" scroll>Fazer um evento</Link></li>
                 </ul>
             </li>
             <li className="list-item">
                 <Text as="h4">Contato</Text>
                 <ul className="options">
-                    <li><a href="#">+55 (32) 99918-9934</a></li>
-                    <li><a href="#">suiteesperanca@gmail.com</a></li>
+                    <li>
+                        <a href="https://wa.me/5532999189934" target="_blank" rel="noopener noreferrer">
+                            +55 (32) 99918-9934
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:hospedagemsitioesperanca@gmail.com">hospedagemsitioesperanca@gmail.com</a>
+                    </li>
                 </ul>
             </li>
             <li className="list-item">
@@ -195,9 +196,26 @@ export default function Footer() {
             <li className="list-item">
                 <Text as="h4">Redes sociais</Text>
                 <ul className="options options--icons">
-                    <li><a href="#"><Image src={Instagram} alt="Instagram" /></a></li>
-                    <li><a href="#"><Image src={Facebook} alt="Facebook" /></a></li>
-                    <li><a href="#"><Image src={WhatsApp} alt="WhatsApp" /></a></li>
+                    <li>
+                        <a
+                            href="https://www.instagram.com/sitioesperancamp/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                        >
+                            <Image src={Instagram} alt="Instagram" />
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://wa.me/5532999189934"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="WhatsApp"
+                        >
+                            <Image src={WhatsApp} alt="WhatsApp" />
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ol>

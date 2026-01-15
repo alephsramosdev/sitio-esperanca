@@ -94,7 +94,8 @@ const SidebarContainer = styled.aside`
         background-color: ${(props) => props.theme.colors.neutral.black.base};
         color: ${(props) => props.theme.colors.neutral.white.base};
 
-        & > button {
+        & > button,
+        & > a {
             letter-spacing: -1px;
         }
     }

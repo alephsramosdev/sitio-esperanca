@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import Button from "@/components/button";
+import ReserveNowButton from "@/components/reserve-now-button"
 import Text from "@/components/text";
 
 import Img1 from "@/assets/city/example.png";
@@ -116,12 +116,7 @@ export default function City() {
             <Text as="p" className="description">
                 Uma cidade cheia de pontos turisticos, é passeio o dia todo!
             </Text>
-            <Button
-                bgColor="#084734"
-                color="#fff"
-            >
-                Reservar agora
-            </Button>
+            <ReserveNowButton bgColor="#084734" color="#fff" />
         </Texts>
         <Images>
             <Image

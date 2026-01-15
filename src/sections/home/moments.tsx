@@ -11,6 +11,7 @@ import "swiper/css";
 import imageExample from "@/assets/unidade/hero-op-1.jpg";
 import setaParaDireita from "@/assets/icons/seta-para-direita.svg";
 import Image from "next/image";
+import { buildHospedinReservationUrl } from "@/utils/hospedin";
 
 import Piscina from "@/assets/moments/piscina-enorme-sitio-esperanca.jpg";
 import PetFriendly from "@/assets/moments/pet-friendly-sitio-esperanca.jpg";
@@ -196,7 +197,7 @@ export default function MomentsSection() {
     const handleNext = () => swiperRef.current?.slideNext();
 
     return (
-        <MomentContainer data-aos="fade-up" data-aos-duration="800">
+        <MomentContainer id="o-que-fazer" data-aos="fade-up" data-aos-duration="800">
             <article className="texts">
                 <Text as="h1" className="title">Viva <strong>momentos</strong> marcantes</Text>
                 <Text as="p" className="description">Temos diversas atrações espalhadas por todo o nosso espaço</Text>
@@ -229,7 +230,15 @@ export default function MomentsSection() {
                 >
                     {slides.map((item) => (
                         <SwiperSlide key={item.title}>
-                            <MomentCard image={item.image} alt_image={item.alt}>
+                            <MomentCard
+                                image={item.image}
+                                alt_image={item.alt}
+                                onClick={() => {
+                                    if (typeof window === "undefined") return;
+                                    const url = buildHospedinReservationUrl();
+                                    window.open(url, "_blank", "noopener,noreferrer");
+                                }}
+                            >
                                 {item.title}
                             </MomentCard>
                         </SwiperSlide>

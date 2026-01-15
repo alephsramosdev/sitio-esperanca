@@ -173,7 +173,7 @@ export default function Suites() {
     const handlePrev = () => swiperRef.current?.slidePrev();
     const handleNext = () => swiperRef.current?.slideNext();
 
-    return <SuitesContainer data-aos="fade-up" data-aos-duration="800">
+    return <SuitesContainer id="suites" data-aos="fade-up" data-aos-duration="800">
         <aside className="texts">
             <Text as="h1" className="title">
                 Conheça nossas acomodações
@@ -217,6 +217,7 @@ export default function Suites() {
                     className="button-no-bg"
                     bgColor="#053122"
                     color="#fffce0"
+                    href="/quartos"
                 >
                     Conhecer todas as suítes
                 </Button>
