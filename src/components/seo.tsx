@@ -16,6 +16,13 @@ function toAbsoluteUrl(pathOrUrl: string): string {
 }
 
 function getImageMimeType(url: string): string | undefined {
+    try {
+        const parsed = new URL(url);
+        if (parsed.pathname.startsWith("/api/og/")) return "image/jpeg";
+    } catch {
+        if (url.startsWith("/api/og/")) return "image/jpeg";
+    }
+
     const lower = url.toLowerCase();
     if (lower.endsWith(".png")) return "image/png";
     if (lower.endsWith(".jpg") || lower.endsWith(".jpeg")) return "image/jpeg";
@@ -38,7 +45,7 @@ type SeoProps = {
 
 export default function Seo({ title, description, path, image, additionalImages, imageAlt, type = "website" }: SeoProps) {
     const canonicalUrl = toAbsoluteUrl(path);
-    const primaryImageUrl = toAbsoluteUrl(image || "/logo-black.png");
+    const primaryImageUrl = toAbsoluteUrl(image || "/api/og/default");
     const allImages = [primaryImageUrl, ...(additionalImages || []).map(toAbsoluteUrl)].filter(
         (value, index, self) => self.indexOf(value) === index
     );
@@ -66,6 +73,12 @@ export default function Seo({ title, description, path, image, additionalImages,
                         <meta property="og:image" content={img} />
                         <meta property="og:image:secure_url" content={img} />
                         <meta property="og:image:alt" content={resolvedImageAlt} />
+                        {img === primaryImageUrl ? (
+                            <>
+                                <meta property="og:image:width" content="1200" />
+                                <meta property="og:image:height" content="630" />
+                            </>
+                        ) : null}
                         {imgType ? <meta property="og:image:type" content={imgType} /> : null}
                     </Fragment>
                 );

@@ -92,7 +92,7 @@ export default function Suites() {
             title="Acomodações | Sítio Esperança"
             description="Veja todas as acomodações do Sítio Esperança e escolha a suíte ideal para sua estadia."
             path="/quartos"
-            image="/logo-black.png"
+            image="/api/og/default"
             type="website"
         />
         <SuitesContainer>

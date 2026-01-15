@@ -15,7 +15,7 @@ export default function Home() {
         title="Sítio Esperança | Hospedagem em Miguel Pereira"
         description="Hospedagem confortável em Miguel Pereira (RJ). Conheça nossas suítes, atrações e faça sua reserva online."
         path="/"
-        image="/logo-black.png"
+        image="/api/og/default"
         type="website"
       />
       <Hero />

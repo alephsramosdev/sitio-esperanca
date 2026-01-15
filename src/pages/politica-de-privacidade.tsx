@@ -53,7 +53,7 @@ export default function PoliticaDePrivacidadePage() {
                 title="Política de Privacidade | Sítio Esperança"
                 description="Política de privacidade do Sítio Esperança."
                 path="/politica-de-privacidade"
-                image="/logo-black.png"
+                    image="/api/og/default"
                 type="website"
             />
 

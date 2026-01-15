@@ -775,7 +775,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
     const title = suite.name;
     const description = suite.shortDescription;
-    const suiteImage = suite.images?.[0] || "/logo-black.png";
+    const suiteImage = `/api/og/suite?id=${suite.id}`;
 
     const facts = useMemo(
         () => [
