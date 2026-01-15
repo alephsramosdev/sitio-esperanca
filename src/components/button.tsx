@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import React from "react";
 import Text from "./text";
 
@@ -7,7 +8,7 @@ type ButtonStyleProps = {
     bgColor?: string;
 };
 
-const ButtonStyle = styled.button<ButtonStyleProps>`
+const buttonBase = css<ButtonStyleProps>`
     border: none;
     font-size: 18px;
     width: 162px;
@@ -18,9 +19,9 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
     border-radius: 999px;
     font-family: ${(props) => props.theme.fonts.primary};
     letter-spacing: -1px;
-    font-weight: ${(props) => props.theme.fonts.weights.medium}; 
-    background: ${({ bgColor }) => bgColor || '#000'};
-    color: ${({ color }) => color || '#fff'};
+    font-weight: ${(props) => props.theme.fonts.weights.medium};
+    background: ${({ bgColor }) => bgColor || "#000"};
+    color: ${({ color }) => color || "#fff"};
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
@@ -61,7 +62,15 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
         white-space: nowrap;
         transition: all 0.2s ease-in-out;
     }
-`
+`;
+
+const ButtonStyleButton = styled.button<ButtonStyleProps>`
+    ${buttonBase}
+`;
+
+const ButtonStyleAnchor = styled.a<ButtonStyleProps>`
+    ${buttonBase}
+`;
 
 type ButtonBaseProps = ButtonStyleProps & {
     children?: React.ReactNode;
@@ -89,8 +98,7 @@ export default function Button({
         const { href, ...anchorProps } = props;
 
         return (
-            <ButtonStyle
-                as="a"
+            <ButtonStyleAnchor
                 href={href}
                 bgColor={bgColor}
                 color={color}
@@ -103,12 +111,12 @@ export default function Button({
                 <Text as="span" className="text_hover">
                     {children}
                 </Text>
-            </ButtonStyle>
+            </ButtonStyleAnchor>
         );
     }
 
     return (
-        <ButtonStyle
+        <ButtonStyleButton
             bgColor={bgColor}
             color={color}
             className={className}
@@ -121,6 +129,6 @@ export default function Button({
             <Text as="span" className="text_hover">
                 {children}
             </Text>
-        </ButtonStyle>
+        </ButtonStyleButton>
     );
 }
