@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useRouter } from "next/router";
 
 import Button from "@/components/button";
-import { buildHospedinReservationUrl } from "@/utils/hospedin";
+import { buildReservationHref } from "@/utils/reservations";
 
 type ReserveNowButtonProps = {
     bgColor?: string;
@@ -11,6 +11,8 @@ type ReserveNowButtonProps = {
     className?: string;
     children?: ReactNode;
     style?: CSSProperties;
+    checkIn?: string;
+    checkOut?: string;
 };
 
 export default function ReserveNowButton({
@@ -19,19 +21,21 @@ export default function ReserveNowButton({
     className,
     style,
     children = "Reservar agora",
+    checkIn,
+    checkOut,
 }: ReserveNowButtonProps) {
     const router = useRouter();
 
-    const href = useMemo(() => {
+    const link = useMemo(() => {
         // Recompute when route changes so the latest persisted UTM is applied.
-        return buildHospedinReservationUrl();
+        return buildReservationHref({ checkIn, checkOut });
     }, [router.asPath]);
 
     return (
         <Button
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={link.href}
+            target={link.target}
+            rel={link.rel}
             bgColor={bgColor}
             color={color}
             className={className}

@@ -838,8 +838,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
     const otherSuites = useMemo(() => suites.filter((s) => s.id !== suite.id), [suite.id]);
 
-    const { installmentPrice, installmentCount } = useMemo(() => {
-        const installmentCount = 3;
+    const { installmentPrice } = useMemo(() => {
         const pricing = suite.pricing;
 
         const getNightRate = (date: Date): number => {
@@ -863,8 +862,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
         }
 
         return {
-            installmentCount,
-            installmentPrice: total / installmentCount,
+            installmentPrice: total / 6,
         };
     }, [suite.price, suite.pricing, checkIn, checkOut]);
 
@@ -1017,7 +1015,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         <div className="price">
                             <Text as="span" className="value">
                                 <span style={{ fontSize: 16, opacity: 0.75, fontWeight: 500 }}>
-                                    A partir de: {installmentCount}x de{" "}
+                                    A partir de: 6x de{" "}
                                 </span>
                                 <span style={{ fontSize: 22, fontWeight: 700 }}>
                                     {formatCurrencyBRL(installmentPrice)}
@@ -1055,7 +1053,12 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         </div>
 
                         <div className="cta">
-                            <ReserveNowButton bgColor="rgb(8, 71, 52)" color="rgb(255, 255, 255)" />
+                            <ReserveNowButton
+                                bgColor="rgb(8, 71, 52)"
+                                color="rgb(255, 255, 255)"
+                                checkIn={checkIn}
+                                checkOut={checkOut}
+                            />
 
                             <WhatsAppButton
                                 href={whatsAppUrl || "#"}
@@ -1175,7 +1178,7 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
 
                         <Text as="div" className="price">
                             <span style={{ fontSize: 12, opacity: 0.75, fontWeight: 500 }}>
-                                A partir de: {installmentCount}x de{" "}
+                                A partir de: 6x de{" "}
                             </span>
                             <span style={{ fontWeight: 700 }}>
                                 {formatCurrencyBRL(installmentPrice)}
@@ -1183,7 +1186,12 @@ export default function SuiteDetailsPage({ suiteId }: SuitePageProps) {
                         </Text>
 
                         <div className="cta">
-                            <ReserveNowButton bgColor="rgb(8, 71, 52)" color="rgb(255, 255, 255)" />
+                            <ReserveNowButton
+                                bgColor="rgb(8, 71, 52)"
+                                color="rgb(255, 255, 255)"
+                                checkIn={checkIn}
+                                checkOut={checkOut}
+                            />
                         </div>
                     </StickyBarInner>
                 </StickyBar>

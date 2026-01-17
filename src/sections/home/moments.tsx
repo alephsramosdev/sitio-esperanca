@@ -11,7 +11,7 @@ import "swiper/css";
 import imageExample from "@/assets/unidade/hero-op-1.jpg";
 import setaParaDireita from "@/assets/icons/seta-para-direita.svg";
 import Image from "next/image";
-import { buildHospedinReservationUrl } from "@/utils/hospedin";
+import { buildReservationHref } from "@/utils/reservations";
 
 import Piscina from "@/assets/moments/piscina-enorme-sitio-esperanca.jpg";
 import PetFriendly from "@/assets/moments/pet-friendly-sitio-esperanca.jpg";
@@ -235,8 +235,8 @@ export default function MomentsSection() {
                                 alt_image={item.alt}
                                 onClick={() => {
                                     if (typeof window === "undefined") return;
-                                    const url = buildHospedinReservationUrl();
-                                    window.open(url, "_blank", "noopener,noreferrer");
+                                    const link = buildReservationHref();
+                                    window.open(link.href, "_blank", "noopener,noreferrer");
                                 }}
                             >
                                 {item.title}
