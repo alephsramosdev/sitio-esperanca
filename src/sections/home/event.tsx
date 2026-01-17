@@ -1,6 +1,7 @@
 import Button from "@/components/button";
 import Text from "@/components/text";
 import styled from "@emotion/styled";
+import { buildReservationHref } from "@/utils/reservations";
 
 import Casamento from "@/assets/event/event-casamento-sitio-esperanca.jpeg";
 import CasamentoMobile from "@/assets/event/casamento-sitio-esperanca.jpeg";
@@ -127,7 +128,9 @@ export default function Event() {
                 <Button
                     bgColor="#fff"
                     color="#000"
-                    href="/eventos"
+                    href={buildReservationHref().href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
                     Saiba mais
                 </Button>

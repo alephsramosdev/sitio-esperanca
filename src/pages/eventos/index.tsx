@@ -1,16 +1,17 @@
-import Seo from "@/components/seo";
+import type { GetServerSideProps } from "next";
+import { buildReservationHref } from "@/utils/reservations";
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const link = buildReservationHref();
+
+    return {
+        redirect: {
+            destination: link.href,
+            permanent: false,
+        },
+    };
+};
 
 export default function Eventos() {
-    return (
-        <>
-            <Seo
-                title="Eventos | Sítio Esperança"
-                description="Realize seu evento no Sítio Esperança. Entre em contato e faça sua reserva."
-                path="/eventos"
-                image="/api/og/default"
-                type="website"
-            />
-            <div style={{ padding: 148, width: "100%" }}>Eventos Page</div>
-        </>
-    );
+    return null;
 }

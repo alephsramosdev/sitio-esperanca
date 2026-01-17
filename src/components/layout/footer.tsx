@@ -8,6 +8,7 @@ import Logo from "@/assets/logotipo/logo.svg";
 import Instagram from "@/assets/icons/instagram.svg";
 import WhatsApp from "@/assets/icons/whatsapp.svg";
 import ReserveNowButton from "@/components/reserve-now-button";
+import { buildReservationHref } from "@/utils/reservations";
 
 const FooterContainer = styled.footer`
     width: calc(100% - 24px);
@@ -171,7 +172,11 @@ export default function Footer() {
                     <li><Link href="/#o-que-fazer" scroll>O que fazer</Link></li>
                     <li><Link href="/#suites" scroll>Suítes</Link></li>
                     <li><Link href="/quartos">Minha hospedagem</Link></li>
-                    <li><Link href="/#eventos" scroll>Fazer um evento</Link></li>
+                    <li>
+                        <a href={buildReservationHref().href} target="_blank" rel="noopener noreferrer">
+                            Fazer um evento
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li className="list-item">
