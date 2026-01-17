@@ -29,7 +29,7 @@ export default function ReserveNowButton({
     const link = useMemo(() => {
         // Recompute when route changes so the latest persisted UTM is applied.
         return buildReservationHref({ checkIn, checkOut });
-    }, [router.asPath]);
+    }, [router.asPath, checkIn, checkOut]);
 
     return (
         <Button
