@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@emotion/react";
+import styled from "@emotion/styled";
 import { useEffect, useRef } from "react";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
@@ -12,6 +13,13 @@ import Footer from "@/components/layout/footer";
 import { captureAndPersistUtmFromLocation } from "@/utils/utm";
 
 const GTM_ID = "GTM-PD3JQGRS";
+
+const AppShell = styled.div`
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+`;
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -76,9 +84,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`,
         }}
       />
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <AppShell>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </AppShell>
     </ThemeProvider>
   );
 }

@@ -98,11 +98,12 @@ export const suites: Suite[] = [
             weekend: 360,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite1/example1.avif",
-            "/suites/suite1/example2.avif",
-            "/suites/suite1/example3.avif",
+            "/fotos-suite-nova/suite-1-1.jpeg",
+            "/fotos-suite-nova/suite-1-2.jpeg",
+            "/fotos-suite-nova/suite-1-3.jpeg",
+            "/fotos-suite-nova/suite-1-4.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
@@ -123,10 +124,12 @@ export const suites: Suite[] = [
             weekend: 360,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite2/example1.avif",
-            "/suites/suite2/example2.avif",
+            "/fotos-suite-nova/suite-2-1.jpeg",
+            "/fotos-suite-nova/suite-2-2.jpeg",
+            "/fotos-suite-nova/suite-2-3.jpeg",
+            "/fotos-suite-nova/suite-2-4.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
@@ -147,12 +150,13 @@ export const suites: Suite[] = [
             weekend: 390,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite3/example1.avif",
-            "/suites/suite3/example2.avif",
-            "/suites/suite3/example3.avif",
-            "/suites/suite3/example4.avif",
+            "/fotos-suite-nova/suite-3-1.jpeg",
+            "/fotos-suite-nova/suite-3-2.jpeg",
+            "/fotos-suite-nova/suite-3-3.jpeg",
+            "/fotos-suite-nova/suite-3-4.jpeg",
+            "/fotos-suite-nova/suite-3-5.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
@@ -173,12 +177,14 @@ export const suites: Suite[] = [
             weekend: 360,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite4/example1.avif",
-            "/suites/suite4/example2.avif",
-            "/suites/suite4/example3.avif",
-            "/suites/suite4/example4.avif",
+            "/fotos-suite-nova/suite-4-1.jpeg",
+            "/fotos-suite-nova/suite-4-2.jpeg",
+            "/fotos-suite-nova/suite-4-3.jpeg",
+            "/fotos-suite-nova/suite-4-4.jpeg",
+            "/fotos-suite-nova/suite-4-5.jpeg",
+            "/fotos-suite-nova/suite-4-6.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
@@ -199,13 +205,16 @@ export const suites: Suite[] = [
             weekend: 500,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite5/example1.avif",
-            "/suites/suite5/example2.avif",
-            "/suites/suite5/example3.avif",
-            "/suites/suite5/example4.jpeg",
-            "/suites/suite5/example5.avif",
+            "/fotos-suite-nova/suite-5-1.jpeg",
+            "/fotos-suite-nova/suite-5-2.jpeg",
+            "/fotos-suite-nova/suite-5-3.jpeg",
+            "/fotos-suite-nova/suite-5-4.jpeg",
+            "/fotos-suite-nova/suite-5-5.jpeg",
+            "/fotos-suite-nova/suite-5-6.jpeg",
+            "/fotos-suite-nova/suite-5-7.jpeg",
+            "/fotos-suite-nova/suite-5-8.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
@@ -226,14 +235,15 @@ export const suites: Suite[] = [
             weekend: 800,
         },
         amenities: [...commonAmenities],
-        // coloque as imagens em public/suites/suite-1/ e referencie pelo caminho público
+        // imagens atualizadas em public/fotos-suite-nova/
         images: [
-            "/suites/suite6/example1.avif",
-            "/suites/suite6/example2.avif",
-            "/suites/suite6/example3.avif",
-            "/suites/suite6/example4.avif",
-            "/suites/suite6/example5.avif",
-            "/suites/suite6/example6.avif",
+            "/fotos-suite-nova/suite-chale-1.jpeg",
+            "/fotos-suite-nova/suite-chale-2.jpeg",
+            "/fotos-suite-nova/suite-chale-3.jpeg",
+            "/fotos-suite-nova/suite-chale-4.jpeg",
+            "/fotos-suite-nova/suite-chale-5.jpeg",
+            "/fotos-suite-nova/suite-chale-6.jpeg",
+            "/fotos-suite-nova/suite-chale-7.jpeg",
         ],
         noAmenities: [...commonNoAmenities],
     },
